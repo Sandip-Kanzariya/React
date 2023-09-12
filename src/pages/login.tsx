@@ -4,6 +4,9 @@ import {auth, provider} from "../config/firebase";
 import { signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+import { Button } from 'react-bootstrap';
+
+
 export const Login = () =>{
   const navigate = useNavigate();
 
@@ -13,9 +16,19 @@ export const Login = () =>{
   };
 
   return (
+    /*
     <div>
       <p>Sign in with Google to Continue</p>
       <button onClick={signInWithGoogle}>Sign in with Google</button>
     </div>
+    */
+
+    
+    <div className="text-center mt-4">
+    <p>Sign in with Google to Continue</p>
+    <Button variant="primary" onClick={signInWithGoogle}>
+      Sign in with Google
+    </Button>
+  </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card, Button } from 'react-bootstrap';
 
 import { Post as IPost } from "./main";
 import {
@@ -88,6 +89,32 @@ export const Post = (props: Props) => {
   }, []);
 
   return (
+<Card className="m-3" style={{ border: '1px solid DodgerBlue', borderRadius: '8px', boxShadow: '0px 0px 6px 0px #bbb' }}>
+      <Card.Body>
+        <Card.Title className="title">
+          <h4 className="mb-3">{post.title}</h4>
+        </Card.Title>
+        <Card.Text className="body">
+          <p>{post.description}</p>
+        </Card.Text>
+        <Card.Text className="footer">
+          <p className="text-muted">@{post.username}</p>
+        </Card.Text>
+        <Button
+          variant={hasUserLikes ? 'danger' : 'primary'}
+          onClick={hasUserLikes ? removeLike : addLike}
+          className="w-40"
+        >
+          {hasUserLikes ? 'Unlike' : 'Like'}
+        </Button>
+        {likes && (
+          <Card.Text className="mt-3">
+            <small className="text-muted">Likes: {likes.length}</small>
+          </Card.Text>
+        )}
+      </Card.Body>
+    </Card>
+    /*
     <div
       style={{
         border: "3px solid DodgerBlue",
@@ -111,5 +138,6 @@ export const Post = (props: Props) => {
 
       {likes && <p>Likes : {likes?.length}</p>}
     </div>
+    */
   );
 };
